@@ -158,25 +158,5 @@ export const api = {
             console.error('Unexpected error in getProducts:', e);
             return dummyProducts as Product[];
         }
-            .select('*')
-            .eq('is_featured', true);
-
-        const { data: collectionData, error: collectionError } = await supabase
-            .from('collection_items')
-            .select('*')
-            .eq('is_featured', true);
-
-        if (shopError) throw shopError;
-        if (collectionError) throw collectionError;
-
-        // Combine and map types
-        const shopProducts = (shopData || []).map(p => ({ ...p, type: 'ready' }));
-        const collectionItems = (collectionData || []).map(p => ({ ...p, type: 'custom' }));
-
-        if (shopProducts.length === 0 && collectionItems.length === 0) {
-            return featuredDummyProducts as Product[];
-        }
-
-        return [...shopProducts, ...collectionItems] as Product[];
     }
 };
