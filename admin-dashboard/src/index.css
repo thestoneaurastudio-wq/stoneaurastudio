@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode - Gogo Style Purple Theme */
+    --background: 240 20% 98%;
+    --foreground: 240 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+
+    /* Purple Primary */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 10%;
+
+    /* Muted */
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    /* Accent */
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 262 83% 58%;
+
+    /* Radius */
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 10%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 10% 10%;
+    --sidebar-border: 240 6% 92%;
+
+    /* Chart Colors */
+    --chart-1: 262 83% 58%;
+    --chart-2: 201 96% 52%;
+    --chart-3: 142 76% 36%;
+    --chart-4: 39 100% 50%;
+    --chart-5: 0 84% 60%;
+  }
+
+  .dark {
+    /* Dark Mode - Gogo Style */
+    --background: 240 10% 10%;
+    --foreground: 0 0% 95%;
+    --card: 240 10% 14%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 10% 14%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Purple Primary (slightly brighter for dark mode) */
+    --primary: 262 83% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 240 5% 18%;
+    --secondary-foreground: 0 0% 95%;
+
+    /* Muted */
+    --muted: 240 5% 18%;
+    --muted-foreground: 240 5% 55%;
+
+    /* Accent */
+    --accent: 262 83% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 262 83% 65%;
+
+    /* Sidebar */
+    --sidebar-background: 240 10% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 262 83% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 5% 18%;
+
+    /* Chart Colors (adjusted for dark mode) */
+    --chart-1: 262 83% 65%;
+    --chart-2: 201 96% 60%;
+    --chart-3: 142 76% 45%;
+    --chart-4: 39 100% 55%;
+    --chart-5: 0 84% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer components {
+
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent;
+  }
+
+  /* Glow effect */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  /* Stats card hover effect */
+  .stats-card {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .stats-card:hover {
+    @apply shadow-xl -translate-y-1;
+  }
+
+  .stats-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .stats-card:hover::before {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Hover scale */
+  .hover-scale {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-scale:hover {
+    @apply scale-[1.02];
+  }
+}
