@@ -1,0 +1,8 @@
+{
+  "env": {
+    "VITE_SUPABASE_URL": "https://eykhtlcstzztoyuqgzzl.supabase.co",
+    "VITE_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5a2h0bGNzdHp6dG95dXFnenpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg2NjE5MzYsImV4cCI6MjA4NDIzNzkzNn0.mfSjsHYUsHOMbkOclVCgowmHNrUXC_TziVcIaCgP78I",
+    "VITE_RAZORPAY_KEY_ID": "rzp_test_YOUR_KEY_HERE",
+    "VITE_WHATSAPP_NUMBER": "919289751333"
+  }
+}
