@@ -49,7 +49,7 @@ const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
                     transition={{ duration: 0.6 }}
                 />
 
-                <div className="absolute left-4 top-4 z-10 flex flex-wrap gap-2">
+                <div className="absolute left-4 top-4 z-10 flex flex-wrap gap-2 hidden md:block">
                     <span className="rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-lg">
                         {primaryBadge}
                     </span>
@@ -62,17 +62,19 @@ const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
 
                 <button
                     type="button"
-                    className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-charcoal shadow-sm transition-transform duration-300 hover:scale-105 hover:text-primary"
+                    className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-charcoal shadow-sm transition-transform duration-300 hover:scale-105 hover:text-primary hidden md:block"
                     aria-label={`Save ${product.name}`}
                 >
                     <Heart className="h-4 w-4" />
                 </button>
 
+
+
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="hidden md:block absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                 {/* View Details Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="hidden md:flex absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         whileHover={{ scale: 1.05 }}
@@ -89,8 +91,8 @@ const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
                 </div>
             </Link>
 
-            <div className="flex flex-1 flex-col p-3.5 sm:p-5">
-                <div className="mb-3 flex items-center justify-between gap-3">
+            <div className="flex flex-1 flex-col p-1 sm:p-3">
+                <div className="mb-3 flex items-center justify-between gap-3 hidden md:block">
                     <span className="rounded-full bg-secondary/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-800">
                         {product.category}
                     </span>
@@ -105,11 +107,11 @@ const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
                     </h3>
                 </Link>
 
-                <p className="mb-3 line-clamp-2 text-[11px] sm:text-sm leading-5 sm:leading-6 text-gray-800">
+                <p className="mb-3 line-clamp-2 text-[11px] sm:text-sm leading-5 sm:leading-6 text-gray-800 hidden md:block">
                     {product.description}
                 </p>
 
-                <div className="mb-3 space-y-1.5 rounded-xl sm:rounded-2xl bg-secondary/35 p-2 sm:p-3 text-[10px] sm:text-xs text-gray-800">
+                <div className="mb-3 hidden md:block space-y-1.5 rounded-xl sm:rounded-2xl bg-secondary/35 p-2 sm:p-3 text-[10px] sm:text-xs text-gray-800">
                     <div className="flex items-center gap-2">
                         <Truck className="h-3 sm:h-3.5 w-3 sm:w-3.5 text-primary" />
                         <span>{deliveryLabel}</span>
@@ -123,17 +125,17 @@ const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
                 <div className="mb-4 flex items-end justify-between gap-3">
                     <div>
                         <p className="text-base sm:text-2xl font-semibold text-primary">{formattedPrice}</p>
-                        <p className="text-[9px] sm:text-xs text-gray-800">
+                        <p className="hidden md:block text-[9px] sm:text-xs text-gray-800">
                             {priceValue > 0 ? "GST discussed at checkout" : "Price on enquiry"}
                         </p>
                     </div>
-                    <div className="text-right text-[9px] sm:text-xs text-gray-800">
+                    <div className="hidden md:block text-right text-[9px] sm:text-xs text-gray-800">
                         <p className="truncate max-w-[60px] sm:max-w-none">{product.material}</p>
                         <p>{product.dimensions}</p>
                     </div>
                 </div>
 
-                <div className="mt-auto flex items-center gap-3">
+                <div className="hidden md:flex mt-auto items-center gap-3">
                     {isReady ? (
                         <Button
                             size="sm"

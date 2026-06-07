@@ -25,7 +25,7 @@ const CTASection = () => {
         >
           {/* Decorative Sparkles */}
           <div className="absolute top-10 left-10 text-primary opacity-20">
-            <Sparkles className="w-12 h-12" />
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48dGV4dCB4PSIwIiB5PSIyMCIgZmlsbD0iZ29sZCIgZm9udC1zaXplPSIyMCI+4pyKPC90ZXh0Pjwvc3ZnPg==" alt="golden embroidery" className="w-12 h-12 opacity-20" />
           </div>
           <div className="absolute bottom-10 right-10 text-primary opacity-20">
             <Sparkles className="w-12 h-12" />

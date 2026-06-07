@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
+import hanumanImg from "@/assets/Hanuman-ji.png";
+import krishnaImg from "@/assets/Krishna-Ji.png";
+import radhaImg from "@/assets/Krishna-Radha.png";
 import RevealOnScroll from "./RevealOnScroll";
 import { motion } from "framer-motion";
 
@@ -10,37 +10,37 @@ const ProductShowcase = () => {
     {
       id: 1,
       name: "Ghar Mandir",
-      image: product1,
+      image: hanumanImg,
       count: "25+ Designs",
     },
     {
       id: 2,
       name: "Marble Idols",
-      image: product2,
+      image: krishnaImg,
       count: "50+ Pieces",
     },
     {
       id: 3,
       name: "Wall Panels",
-      image: product3,
+      image: radhaImg,
       count: "15+ Styles",
     },
     {
       id: 4,
       name: "Temple Decor",
-      image: product1,
+      image: hanumanImg,
       count: "30+ Items",
     },
     {
       id: 5,
       name: "Custom Designs",
-      image: product2,
+      image: krishnaImg,
       count: "Unlimited",
     },
     {
       id: 6,
       name: "Luxury Collection",
-      image: product3,
+      image: radhaImg,
       count: "Premium",
     },
   ];

@@ -142,114 +142,130 @@ const Header = () => {
                 <Menu className="w-6 h-6" />
               </button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="w-full max-h-[70vh] h-auto p-4 bg-white backdrop-blur-xl rounded-t-2xl shadow-xl">
-          <div className="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-3"></div>
-          {/* Header with Logo */}
-              <SheetHeader className="p-4 bg-gradient-to-r from-primary/10 to-transparent border-b border-border">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <User className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <SheetTitle className="text-left text-base font-semibold font-serif">Welcome</SheetTitle>
-                    <p className="text-xs text-muted-foreground">Explore our luxury collections</p>
-                  </div>
-                </div>
-              </SheetHeader>
+            <SheetContent side="left" className="w-[85vw] sm:w-[400px] p-0 bg-[#fdfaf5] border-r-0 shadow-2xl flex flex-col">
+              {/* Header with Logo */}
+              <div className="p-6 border-b border-primary/10 flex items-center justify-between bg-white/50 backdrop-blur-sm">
+                <Link to="/" onClick={() => setIsMenuOpen(false)}>
+                  <img src={logo} alt="StoneAura Studio" className="h-10 w-auto" />
+                </Link>
+              </div>
 
               {/* Navigation Content */}
-              <div className="flex flex-col h-[calc(100vh-80px)]">
-                <div className="flex-1 overflow-y-auto custom-scrollbar">
-                  {/* Quick Links */}
-                  <div className="p-3 mb-2 bg-white/10 rounded-lg border-b border-border">
-                    {navLinks.map((link) => (
-                      <Link
+              <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
+                <div className="space-y-8">
+                  {/* Main Links */}
+                  <div className="space-y-1">
+                    {navLinks.map((link, i) => (
+                      <motion.div
                         key={link.name}
-                        to={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className={`flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 ${isActive(link.href)
-                          ? "bg-primary/10 text-primary font-medium"
-                          : "text-foreground hover:bg-muted"
-                          }`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
                       >
-                        <link.icon className="w-5 h-5" />
-                        <span className="text-sm">{link.name}</span>
-                      </Link>
+                        <Link
+                          to={link.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`flex items-center gap-4 py-3.5 px-4 rounded-2xl text-lg font-serif transition-all duration-300 ${
+                            isActive(link.href) 
+                              ? "bg-white text-primary font-semibold shadow-sm border border-primary/10" 
+                              : "text-gray-600 hover:text-primary hover:bg-white/50"
+                          }`}
+                        >
+                          <link.icon className={`w-5 h-5 ${isActive(link.href) ? "text-primary" : "text-gray-400"}`} />
+                          {link.name}
+                        </Link>
+                      </motion.div>
                     ))}
                   </div>
 
-                  {/* Collections Categories */}
-                  <div className="p-2">
-                    <p className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                      Collections
-                    </p>
-                    {collections.map((category) => (
-                      <div key={category.name} className="mb-1">
-                        <button
-                          onClick={() => toggleCategory(category.name)}
-                          className="flex items-center justify-between w-full px-3 py-3 rounded-lg text-foreground bg-white/5 hover:bg-white/15 transition-colors group"
+                  <div className="flex items-center justify-center">
+                    <div className="h-px w-12 bg-primary/20" />
+                    <Sparkles className="w-3 h-3 mx-3 text-primary/40" />
+                    <div className="h-px w-12 bg-primary/20" />
+                  </div>
+
+                  {/* Collections */}
+                  <div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60 mb-4 px-4">Our Collections</h4>
+                    <div className="space-y-2">
+                      {collections.map((category, i) => (
+                        <motion.div
+                          key={category.name}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + i * 0.1 }}
+                          className="bg-white/40 rounded-2xl overflow-hidden border border-white/60"
                         >
-                          <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-primary/5 group-hover:bg-primary/10 flex items-center justify-center transition-colors">
-                              {category.icon}
+                          <button
+                            onClick={() => toggleCategory(category.name)}
+                            className="flex items-center justify-between w-full p-4 text-left group transition-colors hover:bg-white/60"
+                          >
+                            <div className="flex items-center gap-4">
+                              <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                                {category.icon}
+                              </div>
+                              <span className="font-medium text-gray-800 tracking-wide">{category.name}</span>
                             </div>
-                            <span className="font-medium text-sm">{category.name}</span>
-                          </div>
-                          <ChevronDown
-                            className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${expandedCategory === category.name ? "rotate-180" : ""
+                            <ChevronDown
+                              className={`w-4 h-4 text-primary/40 transition-transform duration-300 ${
+                                expandedCategory === category.name ? "rotate-180 text-primary" : ""
                               }`}
-                          />
-                        </button>
-
-                        {/* Subcategories */}
-                        <AnimatePresence>
-                          {expandedCategory === category.name && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="overflow-hidden ml-4 pl-6 border-l-2 border-primary/20 space-y-1"
-                            >
-                              {category.subcategories.map((sub) => (
-                                <Link
-                                  key={sub}
-                                  to={`/shop?category=${encodeURIComponent(category.name)}&sub=${encodeURIComponent(sub)}`}
-                                  onClick={() => setIsMenuOpen(false)}
-                                  className="flex items-center gap-2 py-2.5 px-3 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
-                                >
-                                  <ChevronRight className="w-3 h-3" />
-                                  {sub}
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    ))}
-
-                    {/* View All Link */}
-                    <Link
-                      to="/collections"
-                      onClick={() => setIsMenuOpen(false)}
-                      className="flex items-center gap-3 px-3 py-3 mt-2 rounded-lg bg-primary/5 text-primary font-medium hover:bg-primary/10 transition-colors"
-                    >
-                      <Sparkles className="w-5 h-5" />
-                      View All Collections
-                    </Link>
+                            />
+                          </button>
+                          
+                          <AnimatePresence>
+                            {expandedCategory === category.name && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                className="overflow-hidden bg-white/50"
+                              >
+                                <div className="pl-16 py-3 pr-4 space-y-4 border-t border-primary/5">
+                                  {category.subcategories.map((sub) => (
+                                    <Link
+                                      key={sub}
+                                      to={`/shop?category=${encodeURIComponent(category.name)}&sub=${encodeURIComponent(sub)}`}
+                                      onClick={() => setIsMenuOpen(false)}
+                                      className="flex items-center justify-between text-sm text-gray-500 hover:text-primary transition-colors group/link"
+                                    >
+                                      <span>{sub}</span>
+                                      <ChevronRight className="w-3 h-3 opacity-0 -translate-x-2 transition-all duration-300 group-hover/link:opacity-100 group-hover/link:translate-x-0" />
+                                    </Link>
+                                  ))}
+                                  
+                                  <Link
+                                    to={`/shop?category=${encodeURIComponent(category.name)}`}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="inline-flex text-xs font-semibold uppercase tracking-wider text-primary pt-2 hover:opacity-80"
+                                  >
+                                    View All {category.name} →
+                                  </Link>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Bottom CTA */}
-                <div className="p-4 border-t border-border bg-muted/30">
-                  <Link
-                    to="/contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300"
-                  >
-                    <Phone className="w-4 h-4" />
-                    Get Custom Quote
-                  </Link>
+              {/* Bottom Actions */}
+              <div className="p-6 bg-white border-t border-primary/10 space-y-5 shadow-[0_-10px_30px_rgba(0,0,0,0.02)] relative z-10">
+                <Link
+                  to="/contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-primary to-[#a88945] text-white py-3.5 rounded-full font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Custom Requirements
+                </Link>
+                <div className="flex items-center justify-center gap-6 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
+                  <a href="#" className="hover:text-primary transition-colors">Instagram</a>
+                  <a href="#" className="hover:text-primary transition-colors">Facebook</a>
+                  <a href="#" className="hover:text-primary transition-colors">WhatsApp</a>
                 </div>
               </div>
             </SheetContent>

@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import FloatingContactHub from "./components/FloatingContactHub";
 import SchemaMarkup from "./components/SchemaMarkup";
 import SmoothScroll from "./components/SmoothScroll";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Sonner />
           <SmoothScroll />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/collections" element={<Collections />} />

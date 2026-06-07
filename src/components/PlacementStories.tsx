@@ -1,6 +1,6 @@
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
+import hanumanImg from "@/assets/Hanuman-ji.png";
+import krishnaImg from "@/assets/Krishna-Ji.png";
+import radhaImg from "@/assets/Krishna-Radha.png";
 
 import React from "react";
 import { MapPin, Expand, ChevronRight, ChevronLeft } from "lucide-react";
@@ -12,42 +12,42 @@ const PlacementStories = () => {
     const stories = [
         {
             id: 1,
-            image: product1,
+            image: hanumanImg,
             location: "Modern Villa, Jaipur",
             description: "Custom Makrana Mandir integrated into a contemporary living space.",
             tag: "Home Mandir"
         },
         {
             id: 2,
-            image: product2,
+            image: krishnaImg,
             location: "Private Residence, Mumbai",
             description: "Pure white Ganesh Ji idol placed in a minimalist pooja room.",
             tag: "Idols"
         },
         {
             id: 3,
-            image: product3,
+            image: radhaImg,
             location: "Heritage Hotel, Udaipur",
             description: "Traditional wall panels adding grandeur to the reception lobby.",
             tag: "Wall Panels"
         },
         {
             id: 4,
-            image: product1,
+            image: hanumanImg,
             location: "Penthouse, Gurgaon",
             description: "Bespoke carved temple with custom lighting and storage.",
             tag: "Ghar Mandir"
         },
         {
             id: 5,
-            image: product2,
+            image: krishnaImg,
             location: "Bungalow, Pune",
             description: "Detailed Radha Krishna idol centerpiece for a family prayer hall.",
             tag: "Idols"
         },
         {
             id: 6,
-            image: product3,
+            image: radhaImg,
             location: "Luxury Apartment, Bangalore",
             description: "Modular marble panels creating a serene balcony sanctuary.",
             tag: "Wall Panels"

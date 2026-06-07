@@ -331,19 +331,30 @@ const ProductDetail = () => {
 
                                 {/* Cart & Quantity Controls */}
                                 <div className="mb-6 flex flex-col sm:flex-row gap-3">
-                                    <div className="flex items-center justify-between rounded-2xl border border-border bg-white px-2 py-1 h-12 w-full sm:w-36 shrink-0">
-                                        <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-2 hover:text-primary">
-                                            <Minus className="h-4 w-4" />
-                                        </button>
-                                        <span className="w-10 text-center text-sm font-semibold">{quantity}</span>
-                                        <button onClick={() => setQuantity(quantity + 1)} className="p-2 hover:text-primary">
-                                            <Plus className="h-4 w-4" />
+                                    {/* Mobile row for Quantity + Wishlist */}
+                                    <div className="flex gap-3 sm:w-auto w-full">
+                                        <div className="flex flex-1 sm:flex-none items-center justify-between rounded-2xl border border-border bg-white px-2 py-1 h-12 sm:w-36 shrink-0">
+                                            <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-2 hover:text-primary">
+                                                <Minus className="h-4 w-4" />
+                                            </button>
+                                            <span className="w-10 text-center text-sm font-semibold">{quantity}</span>
+                                            <button onClick={() => setQuantity(quantity + 1)} className="p-2 hover:text-primary">
+                                                <Plus className="h-4 w-4" />
+                                            </button>
+                                        </div>
+                                        
+                                        <button
+                                            type="button"
+                                            onClick={toggleWishlist}
+                                            className="sm:hidden rounded-2xl border border-border bg-white px-4 h-12 transition-colors hover:border-red-500 hover:text-red-500 flex items-center justify-center w-12 shrink-0"
+                                        >
+                                            <Heart className={`h-5 w-5 ${isWishlist ? "fill-red-500 text-red-500" : ""}`} />
                                         </button>
                                     </div>
 
                                     <div className="flex-1 flex flex-col gap-2">
                                         {isReady ? (
-                                            <div className="flex gap-3">
+                                            <div className="flex flex-col sm:flex-row gap-3">
                                                 <Button onClick={() => addToCart(product, quantity)} size="lg" className="h-12 flex-1 rounded-2xl bg-primary text-base hover:shadow-gold transition-all duration-300">
                                                     <ShoppingBag className="mr-2 h-5 w-5" />
                                                     Add to Cart
@@ -367,7 +378,7 @@ const ProductDetail = () => {
                                                 </a>
                                             </div>
                                         ) : (
-                                            <div className="flex gap-3">
+                                            <div className="flex flex-col sm:flex-row gap-3">
                                                 <a
                                                     href={`https://wa.me/919876543210?text=${encodeURIComponent(
                                                         `Hi! I'm interested in customizing the "${product.name}". Can we discuss the dimensions, pricing, and stone options?`
@@ -397,10 +408,12 @@ const ProductDetail = () => {
                                         )}
                                     </div>
 
+
+                                    {/* Desktop Wishlist Button */}
                                     <button
                                         type="button"
                                         onClick={toggleWishlist}
-                                        className="rounded-2xl border border-border bg-white px-4 h-12 transition-colors hover:border-red-500 hover:text-red-500 flex items-center justify-center w-full sm:w-12 shrink-0"
+                                        className="hidden sm:flex rounded-2xl border border-border bg-white px-4 h-12 transition-colors hover:border-red-500 hover:text-red-500 items-center justify-center w-12 shrink-0"
                                     >
                                         <Heart className={`h-5 w-5 ${isWishlist ? "fill-red-500 text-red-500" : ""}`} />
                                     </button>
